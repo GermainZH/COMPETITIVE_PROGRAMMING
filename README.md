@@ -1,2 +1,5 @@
 # COMPETITIVE_PROGRAMMING
-cp solutions :)
+Solutions to a variety of cp resources.
+
+# Notes
+
