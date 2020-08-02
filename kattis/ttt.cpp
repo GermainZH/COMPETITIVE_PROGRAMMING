@@ -8,8 +8,12 @@ int main(){
     cout.tie(NULL);
     int x,y;
     cin>>x>>y;
-    if(x>0 && y>0){
-        cout<<(double)-x/(y-1)<<'\n';
+    if(y==1 && x!=0){
+        cout<<"IMPOSSIBLE"<<'\n';
+    }else if(y==1 && x==0){
+        cout<<"ALL GOOD"<<'\n';
+    }else{
+        cout<<setprecision(9)<<fixed<<(double)x/(double)(1-y)<<'\n';
     }
     return 0;
 }
