@@ -2,36 +2,41 @@
 
 using namespace std;
 
+typedef long long ll;
+
+#define pf push_front 
+#define pb push_back
+
 int main(){
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    int t;
-    cin>>t;
-    string a,b;
-    for(int c=1; c<=t;++c){
-        int aq0=0,aq1=0,a1=0,a0=0;
-        cin>>a>>b;
-        for(int i=0; i<a.size();++i){
-            if(b.at(i)=='0'){
-                if(a.at(i)=='1')
-                    a1++;
-                else if(a.at(i)=='?')
-                    aq0++;
-            }else{
-                if(a.at(i)=='0')
-                    a0++;
-                else if(a.at(i)=='?')
-                    aq1++;
-            }
-        }
-        if((a1==a0)||(a0<a1 && a1-a0<=aq1)){
-            cout<<"Case "<<c<<": "<<a0+aq1+aq0<<'\n';
-        }else if(a0>a1){
-            cout<<"Case "<<c<<": "<<a1+aq0+aq1<<'\n';
-        }else{
-            cout<<"Case "<<c<<": "<<-1<<'\n';
-        }
-    }
-    return 0;
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);			
+	int c;
+	cin>>c;
+	for(int i=1; i<=c;++i){
+		string s,t;
+		cin>>s>>t;
+		int ones=0,zeroes=0,qones=0,qzeroes=0;
+		for(int y=0; y<s.size();++y){
+			if(s.at(y)=='1' && t.at(y)!='1'){
+				ones++;
+			}else if(s.at(y)=='0' && t.at(y)!='0'){
+				zeroes++;
+			}else if(s.at(y)=='?' && t.at(y)=='1'){
+				qones++;
+			}else if(s.at(y)=='?' && t.at(y)=='0'){
+				qzeroes++;
+			}
+		}
+		if(zeroes>ones){
+			cout<<"Case "<<i<<": "<<qones+qzeroes+zeroes<<'\n';
+		}else if(ones==zeroes){
+			cout<<"Case "<<i<<": "<<qones+qzeroes+zeroes<<'\n';
+		}else if(ones>zeroes && ones-zeroes<=qones){
+			cout<<"Case "<<i<<": "<<qones+qzeroes+ones<<'\n';
+		}else{
+			cout<<"Case "<<i<<": "<<-1<<'\n';
+		}
+	}
+	return 0;				
 }
