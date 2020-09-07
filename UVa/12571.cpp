@@ -11,7 +11,7 @@ typedef long long ll;
 
 int arr[100000];
 int qr[3000];
-int dp[230];
+int dp[100000][3000];
 
 int main(){
 	ios_base::sync_with_stdio(false);
@@ -20,7 +20,6 @@ int main(){
 	int t;
 	cin>>t;
 	while(t--){
-		memset(dp,-1,sizeof dp);
 		int n,q;
 		cin>>n>>q;
 		for(int i=0; i<n;++i){
@@ -28,14 +27,11 @@ int main(){
 		}
 		for(int i=0; i<q;++i){
 			cin>>qr[i];
-			if(dp[qr[i]-1]==-1){
-				int mx=0;
-				for(int y=0; y<n;++y){
-					mx=max(mx,arr[y]&qr[i]);
-				}
-				dp[qr[i]-1]=mx;
+			int mx=0;
+			for(int y=0; y<n;++y){
+				mx=max(mx,arr[y]&qr[i]);
 			}
-			cout<<dp[qr[i]-1]<<'\n';
+			cout<<mx<<'\n';
 		}
 	}
 	return 0;				
