@@ -6,36 +6,37 @@ typedef long long ll;
 
 #define pf push_front 
 #define pb push_back
-
-int insertionSort(int arr[],int n){
-	int c=0;
-	for (int i=1;i<n;i++){
-		int key=arr[i];
-		int j=i-1;
-		while (j>=0 && arr[j]>key){
-			arr[j+1]=arr[j];
-			j--;
-			c++;
-		}
-		arr[j+1]=key;
-	}
-	return c;
-}
+#define ppf pop_front
+#define ppb pop_back
+#define p push
+#define pp pop
 
 int main(){
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);			
-	int p;
-	cin>>p;
-	while(p--){
-		int k;
-		cin>>k;
-		int arr[20];
-		for(int i=0; i<20;++i){
-			cin>>arr[i];
-		}
-		cout<<k<<' '<<insertionSort(arr, 20)<<'\n';
-	}
-	return 0;				
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);         
+    int n;
+    cin>>n;
+    for(int i=0; i<n;++i){
+        int temp;
+        cin>>temp;
+        cout<<temp;
+        int arr[20];
+        for(int y=0;y<20;++y){
+            cin>>arr[y];
+        }
+        int count=0;
+        for (int y=1;y<20;y++){
+            int key=arr[y];
+            int j=y-1;
+            while (j>=0 && arr[j]>key){
+                arr[j+1]=arr[j];
+                count++;
+                j--;
+            }
+            arr[j+1]=key;
+        }
+        cout<<' '<<count<<'\n';
+    }
+    return 0;               
 }
